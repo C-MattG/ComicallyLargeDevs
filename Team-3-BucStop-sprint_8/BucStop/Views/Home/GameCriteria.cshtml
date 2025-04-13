@@ -303,6 +303,35 @@
         // Add canvas size pass/fail status to the criteria list
         criteriaList.innerHTML += `<li class="${canvasPass ? 'pass' : 'fail'}">Canvas size validation: ${canvasPass ? 'Passed' : 'Failed'}</li>`;
 
+        // After checking canvas size, add parity check
+
+        // Convert the script content (a string)
+        const binaryString = new TextEncoder().encode(scriptContent);
+        let oneCount = 0; // Initialize counter for number of '1' bits
+
+        // Loop through each byte in the encoded binary string
+        for (let i = 0; i < binaryString.length; i++) {
+          let byte = binaryString[i]; // Get the current byte
+          // Count number of 1s in the byte
+          while (byte) {
+            oneCount += byte & 1; // Increment if the least significant bit is 1
+            byte >>= 1; // Right-shift the byte by 1 to check the next bit
+          }
+        }
+
+        // Determine if the total number of 1s is even (even parity)
+        const hasEvenParity = (oneCount % 2 === 0);
+
+        if (hasEvenParity) {
+          successMessages.push('Parity check passed (even number of 1s).');
+        } else {
+          errorMessages.push('Parity check failed (odd number of 1s).');
+        }
+
+        criteriaList.innerHTML += `<li class="${hasEvenParity ? 'pass' : 'fail'}">Parity check: ${hasEvenParity ? 'Passed' : 'Failed'}</li>`;
+
+
+
         // If there are any canvas validation errors, display them and stop the process
         if (canvasErrors.length > 0) {
           document.getElementById('errorMessages').textContent += ' ' + canvasErrors.join(' ');
