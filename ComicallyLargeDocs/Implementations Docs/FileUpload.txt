@@ -1,0 +1,5 @@
+Get into AWS instance:
+ssh -i [bucstop pem location on device] ec2-user@[your public IP from EC2]
+
+Upload file (outside of EC2 instance):
+scp -i "[bucstop pem location on device]" -r "[Whole file address to be uploaded]" ec2-user@[your public IP from EC2]:/home/ec2-user/[where you want to put the file address]
