@@ -1,0 +1,19 @@
+Understanding Implementation Docs:
+A brief explanation of each document is provided below. They have been ordered in this file in the logical order one would work through from start to finish setting up their instance.
+
+it works on my machine - This file talks about getting started with your EC2 instance. Includes things such as uploading files, sshing into the instance, and checking that the right version of dotnet is installed.
+
+FileUpload - A brief explanation of how to upload files to an EC2 instance. We later created a script (uploadScript.ps1) to do this task.
+
+Setting up AWS Backup - Document detailing how to set up AWS backup to allow for rollback.
+
+AWSBackUpRestore - Document detailing how to restore from a backup created in the document above.
+
+Full Deploy Attempt Sprint 3 - This was our first attempt at fully deploying the game app in the architecture we inherited. We ran into issues with the API gateway, which are detailed in this document along with provisions for future possible fixes.
+
+CreateAPIGW - We ended up creating our own API GW in AWS, so this is documentation on how to do that.
+
+AttachingSubmissionToPersistentStorageRevised - This is a document detailing how we then connected the submission page to the api gw to send games to persistent storage.
+
+TestingMultipleFails - This for future implementation. One thing we noticed is that you cannot judge all criterias because once it hits one fail message, it stops checking. Notes are made about ways to possibly fix this in the future.
+
